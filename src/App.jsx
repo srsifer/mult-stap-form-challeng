@@ -1,9 +1,11 @@
 import React from 'react'
+import { Menu } from './components/Menu'
 
 function App() {
   return (
     <>
-      <h1>helo word</h1>
+      <h1>multi Steps Form</h1>
+      <Menu />
     </>
   )
 }
