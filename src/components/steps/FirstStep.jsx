@@ -1,7 +1,10 @@
 import React from 'react'
 
-export const FirstStep = () => {
+
+ const FirstStep = () => {
     return (
         <div>FirstStep</div>
     )
 }
+
+export default FirstStep

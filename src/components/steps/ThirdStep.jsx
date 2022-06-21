@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const ThirdStep = () => {
+const ThirdStep = () => {
     return (
         <div>ThirdStep</div>
     )
 }
+
+export default ThirdStep;
