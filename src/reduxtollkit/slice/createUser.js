@@ -21,7 +21,6 @@ export const newUser = createSlice({
     stepOneReducer: (state, action) => {
       state.user = action.payload;
     },
-
   },
 
 });
