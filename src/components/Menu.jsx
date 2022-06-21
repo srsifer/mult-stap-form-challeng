@@ -5,29 +5,40 @@ import ThirdStep from '../components/steps/ThirdStep'
 import FourthStep from '../components/steps/FourthStep'
 import NavbarForm from '../components/NavbarForm'
 import {customStyles }from '../styles/ModalStyles'
+import { useDispatch } from 'react-redux'
+import { stepOneReducer } from '../reduxtollkit/slice/createUser'
 import Modal from 'react-modal';
-const Menu = () => {
+
+
+function Menu () {
   const [isOpen, setIsOpen ] = useState(false)
   const [step, setStep] = useState(1)
+  const [createUser, setCreateUser ] = useState([])
+  const dispach = useDispatch()
 
   const toggleModal = () => {
     setIsOpen(!isOpen)
     setStep(1)
   }
 
-  const nextStap = () => {
+  const nextStep = (newUser) => {
+    setCreateUser({...createUser, ...newUser})
     setStep(step + 1)
   }
 
+   const lastStep = () => {
+    nextStep()
+    dispach(stepOneReducer(createUser))
+  }  
   const backStep = () => {
     setStep(step - 1)
   }
 
   const renderStaps = () => {
-    if (step === 1) return <FirsStep />
-    if (step === 2) return <SecondStep />
-    if (step === 3) return <ThirdStep />
-    if (step === 4) return <FourthStep />  
+    if (step === 1) return <FirsStep step={step} nextStep={nextStep} />
+    if (step === 2) return <SecondStep step={step} nextStep={nextStep}/>
+    if (step === 3) return <ThirdStep step={step} nextStep={nextStep} />
+    if (step === 4) return <FourthStep step={step} lastStep={lastStep} />  
   }
 
   return (
@@ -37,22 +48,15 @@ const Menu = () => {
         <button onClick={toggleModal}>Novo Cliente</button>
          <Modal
         isOpen={isOpen}
-
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="create user modal"
       >
         <NavbarForm toggleModal={toggleModal} step={step} backStep={backStep}/>
         <form>
           {renderStaps()}
         </form>
-        <button
-          onClick={nextStap}
-          disabled={step === 4}
-        > 
-          Próximo
-        </button>
-      </Modal>
         
+      </Modal>
       </div>
     </aside>
   )

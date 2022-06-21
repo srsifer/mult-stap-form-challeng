@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
-const SecondStep = () => {
+
+const SecondStep = ({/* step, */ nextStep}) => {
+     const [ newUser, setNewUser] = useState({
+      cep: '',
+      adress: '',
+      adresstwo: '',
+   })
+
+   const handleChange = ({ target: { name, value } }) => {
+    setNewUser({...newUser, [name]: value });
+  };
+
+ 
   return (
     <>
     <h3>segundo passo</h3>
@@ -9,8 +22,10 @@ const SecondStep = () => {
           <input 
           type="text" 
           id='cep'
+          name='cep'
           placeholder='cep'
           alt='campo pra preencher o cep'
+          onChange={ handleChange }
           />
         </label>
         <label name='adress'>
@@ -18,8 +33,10 @@ const SecondStep = () => {
           <input 
           type="text" 
           id='adress'
+          name='adress'
           placeholder='endereço 1'
           alt='campo pra preencher o endereço 1'
+          onChange={ handleChange }
           />
         </label>
         <label name='adresstwo'>
@@ -27,12 +44,24 @@ const SecondStep = () => {
           <input 
           type="text" 
           id='adresstwo'
+          name='adresstwo'
           placeholder='endereço 2'
           alt='campo pra preencher o endereço 2'
+          onChange={ handleChange }
           />
         </label>
+        <button
+          type='button'
+          onClick={() => nextStep(newUser)}
+        > 
+          Próximo
+        </button>
     </>
   )
+}
+SecondStep.propTypes = {
+  nextStep: PropTypes.func,
+  step: PropTypes.number
 }
 
 export default SecondStep;
