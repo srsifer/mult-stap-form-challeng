@@ -19,8 +19,9 @@ export const newUser = createSlice({
 
   reducers: {
     stepOneReducer: (state, action) => {
-      state.user = action.payload;
+      state.user = [...state.user, action.payload];
     },
+
   },
 
 });
