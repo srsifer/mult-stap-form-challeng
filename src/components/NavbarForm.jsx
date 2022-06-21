@@ -3,7 +3,7 @@ import { AiOutlineClose, AiOutlineArrowLeft } from "react-icons/ai";
 import { NavbarFormStyles } from '../styles/navBarFormStyles';
 import PropTypes from 'prop-types'
 
-const NavbarForm = ({toggleModal,backStep, stap}) => {
+const NavbarForm = ({toggleModal,backStep, step}) => {
   return (
     <NavbarFormStyles>
       <button onClick={backStep}> <AiOutlineArrowLeft /> </button>
@@ -19,7 +19,7 @@ const NavbarForm = ({toggleModal,backStep, stap}) => {
 NavbarForm.propTypes = {
   toggleModal: PropTypes.func,
   backStep: PropTypes.func,
-  stap: PropTypes.number
+  step: PropTypes.number
 }
 
 export default NavbarForm

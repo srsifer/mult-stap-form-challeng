@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -10,11 +10,22 @@ import PropTypes from 'prop-types'
       cell: '',
    })
 
+  const getProgressFromLocalStorage = () => {
+    const stepProgress = JSON.parse(localStorage.getItem('dataStep1'))
+    stepProgress !== null ? setNewUser(stepProgress) : setNewUser(newUser)
+  }
+  
+
+   useEffect(()=> {
+     getProgressFromLocalStorage()
+   },[])
+   
+
    const handleChange = ({ target: { name, value } }) => {
     setNewUser({...newUser, [name]: value });
   };
 
-
+  
     return (
       <>
       <h2>primeiro passo</h2>
@@ -24,6 +35,7 @@ import PropTypes from 'prop-types'
           type="text" 
           id='name'
           name='name'
+          value={newUser.name}
           placeholder='nome'
           alt='campo pra preencher o nome'
           onChange={ handleChange }
@@ -36,6 +48,7 @@ import PropTypes from 'prop-types'
           type="text" 
           id='lastname'
           name='lastname'
+          value={newUser.lastname}
           placeholder='sobrenome'
           alt='campo pra preencher o sobrenome'
           onChange={ handleChange }
@@ -49,6 +62,7 @@ import PropTypes from 'prop-types'
           name='email'
           placeholder='email'
           alt='campo pra preencher o email'
+          value={newUser.email}
           onChange={ handleChange }
           />
         </label>
@@ -60,6 +74,7 @@ import PropTypes from 'prop-types'
           name='cell'
           placeholder='telefone'
           alt='campo pra preencher o telefone'
+          value={newUser.cell}
           onChange={ handleChange }
           />
         </label>

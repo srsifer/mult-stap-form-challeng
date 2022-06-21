@@ -21,18 +21,25 @@ function Menu () {
     setStep(1)
   }
 
+ 
+
   const nextStep = (newUser) => {
     setCreateUser({...createUser, ...newUser})
-    setStep(step + 1)
+    if(step < 4)  setStep(step + 1)
+    localStorage.setItem(`dataStep${step}`, JSON.stringify(newUser))
   }
 
    const lastStep = () => {
     nextStep()
     dispach(stepOneReducer(createUser))
+    localStorage.clear()
   }  
+
   const backStep = () => {
-    setStep(step - 1)
+    if(step > 1) return setStep(step - 1)
   }
+
+
 
   const renderStaps = () => {
     if (step === 1) return <FirsStep step={step} nextStep={nextStep} />

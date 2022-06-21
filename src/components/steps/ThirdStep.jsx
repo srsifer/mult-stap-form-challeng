@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 
 const ThirdStep = ({step, nextStep}) => {
@@ -12,6 +12,16 @@ const ThirdStep = ({step, nextStep}) => {
     setNewUser({...newUser, [name]: value });
   };
 
+    const getProgressFromLocalStorage = () => {
+    const stepProgress = JSON.parse(localStorage.getItem('dataStep3'))
+    stepProgress !== null ? setNewUser(stepProgress) : setNewUser(newUser)
+  }
+  
+
+   useEffect(()=> {
+     getProgressFromLocalStorage()
+   },[])
+
     return (
       <>
         <h3>Terceito passo</h3>
@@ -23,6 +33,7 @@ const ThirdStep = ({step, nextStep}) => {
           name='date'
           placeholder='Data de Nascimento'
           alt='campo pra preencher a Data de Nascimento'
+          value={newUser.date}
           onChange={ handleChange }
           />
         </label>
@@ -34,6 +45,7 @@ const ThirdStep = ({step, nextStep}) => {
           name='cpf'
           placeholder='CPF'
           alt='campo pra preencher o CPF (cadastro de pessoa fisica)'
+          value={newUser.cpf}
           onChange={ handleChange }
           />
         </label>
@@ -45,6 +57,7 @@ const ThirdStep = ({step, nextStep}) => {
           name='salary'
           placeholder='Renda Mensal'
           alt='campo pra preencher a Renda Mensal'
+          value={newUser.salary}
           onChange={ handleChange }
           />
         </label>
