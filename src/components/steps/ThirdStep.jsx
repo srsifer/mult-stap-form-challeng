@@ -9,7 +9,11 @@ const ThirdStep = ({step, nextStep}) => {
       date: 'dd/mm/aaaa',
       cpf: '',
       salary: 0,
+      id: 0
    })
+
+     
+  const createId = () => setNewUser(newUser.id + 1)
 
    const handleChange = ({ target: { name, value } }) => {
     setNewUser({...newUser, [name]: value });
@@ -36,6 +40,7 @@ const ThirdStep = ({step, nextStep}) => {
       draggable: true,
       progress: undefined,
     })}</>
+     createId()
      nextStep(newUser)
     }
 

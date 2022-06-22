@@ -53,7 +53,9 @@ const thirdStepSchema = Joi.object({
   salary: Joi.number()
     .min(3)
     .message('o campo cpf espera 3 caracteres')
-    .required()
+    .required(),
+
+  id: Joi.number()
 });
 
 
