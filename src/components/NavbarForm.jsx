@@ -6,12 +6,12 @@ import PropTypes from 'prop-types'
 const NavbarForm = ({toggleModal,backStep, step}) => {
   return (
     <NavbarFormStyles>
-      <button onClick={backStep}> <AiOutlineArrowLeft /> </button>
+      <button hidden={step === 1} onClick={backStep}> <AiOutlineArrowLeft /> </button>
       <div></div>
       <div></div>
       <div></div>
       <div></div>
-     <button onClick={toggleModal}><AiOutlineClose/></button>
+     <button hidden={step === 4} onClick={toggleModal}><AiOutlineClose/></button>
     </NavbarFormStyles>
   )
 }
