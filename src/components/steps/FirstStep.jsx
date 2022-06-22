@@ -20,15 +20,18 @@ import { ToastContainer , toast } from 'react-toastify'
   
     function handleValidation() {
     const validationError = firstStepValidation.firstStepValidation(newUser).error;
-    if (validationError) return <>{toast.error(`${validationError.message}`, {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    })}</>
+    if (validationError) return (
+      <>{toast.error(`${validationError.message}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })}
+      </>
+    )
      nextStep(newUser)
     }
   
