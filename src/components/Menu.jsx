@@ -5,35 +5,28 @@ import ThirdStep from '../components/steps/ThirdStep'
 import FourthStep from '../components/steps/FourthStep'
 import NavbarForm from '../components/NavbarForm'
 import {customStyles }from '../styles/ModalStyles'
-import { useDispatch } from 'react-redux'
-import { stepOneReducer } from '../reduxtollkit/slice/createUser'
+
 import Modal from 'react-modal';
+
 
 
 function Menu () {
   const [isOpen, setIsOpen ] = useState(false)
   const [step, setStep] = useState(1)
   const [createUser, setCreateUser ] = useState([])
-  const dispach = useDispatch()
+
 
   const toggleModal = () => {
     setIsOpen(!isOpen)
     setStep(1)
   }
 
- 
-
   const nextStep = (newUser) => {
     setCreateUser({...createUser, ...newUser})
     if(step < 4)  setStep(step + 1)
     localStorage.setItem(`dataStep${step}`, JSON.stringify(newUser))
+    console.log('fui chamado next stap')
   }
-
-   const lastStep = () => {
-    nextStep()
-    dispach(stepOneReducer(createUser))
-    localStorage.clear()
-  }  
 
   const backStep = () => {
     if(step > 1) return setStep(step - 1)
@@ -45,7 +38,7 @@ function Menu () {
     if (step === 1) return <FirsStep step={step} nextStep={nextStep} />
     if (step === 2) return <SecondStep step={step} nextStep={nextStep}/>
     if (step === 3) return <ThirdStep step={step} nextStep={nextStep} />
-    if (step === 4) return <FourthStep step={step} lastStep={lastStep} />  
+    if (step === 4) return <FourthStep step={step} createUser={createUser} toggleModal={toggleModal} />  
   }
 
   return (
@@ -62,7 +55,6 @@ function Menu () {
         <form>
           {renderStaps()}
         </form>
-        
       </Modal>
       </div>
     </aside>
