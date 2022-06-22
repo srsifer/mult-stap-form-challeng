@@ -45,7 +45,6 @@ const secondStepSchema = Joi.object({
 
 const thirdStepSchema = Joi.object({
   date: Joi.date()
-    .message('insira uma data valida')
     .required(),
   cpf: Joi.string()
     .min(minCharacterCPF)
