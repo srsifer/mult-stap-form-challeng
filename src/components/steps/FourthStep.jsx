@@ -1,21 +1,19 @@
 import React from 'react'
 import { BsCheckCircle } from "react-icons/bs";
 import PropTypes from 'prop-types'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { createNewUser } from '../../reduxtollkit/slice/createUser'
 
 
-const FourthStep = ({createUser, toggleModal}) => {
+const FourthStep = ({createUser, toggleModal, saveNewUser}) => {
   const dispach = useDispatch()
-  const allUsers = useSelector(({UserStore}) => (UserStore.users))
   
   const lastStep = () => {
     dispach(createNewUser(createUser))
-    console.log('fui desparada action')
     localStorage.clear()
+    // utilizar o useSelector pra guardar todos usuarios criados no redux
     toggleModal()
-    // utilizar o useSelector pra guardar todos usuarios criados no redux 
-    localStorage.setItem("allUsers", JSON.stringify(allUsers))
+    saveNewUser()
   }
 
   return (
@@ -29,7 +27,8 @@ const FourthStep = ({createUser, toggleModal}) => {
 
 FourthStep.propTypes = {
   createUser: PropTypes.any,
-  toggleModal: PropTypes.func
+  toggleModal: PropTypes.func,
+  saveNewUser: PropTypes.func
 }
 
 export default FourthStep;

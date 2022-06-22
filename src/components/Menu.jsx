@@ -5,15 +5,17 @@ import ThirdStep from '../components/steps/ThirdStep'
 import FourthStep from '../components/steps/FourthStep'
 import NavbarForm from '../components/NavbarForm'
 import {customStyles }from '../styles/ModalStyles'
-
+import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
 import Modal from 'react-modal';
 
 
 
-function Menu () {
+function Menu ({ShowUserList}) {
   const [isOpen, setIsOpen ] = useState(false)
   const [step, setStep] = useState(1)
-  const [createUser, setCreateUser ] = useState([])
+  const [createUser, setCreateUser] = useState([])
+  const allUsers = useSelector(({UserStore}) => (UserStore.users))
 
 
   const toggleModal = () => {
@@ -25,7 +27,6 @@ function Menu () {
     setCreateUser({...createUser, ...newUser})
     if(step < 4)  setStep(step + 1)
     localStorage.setItem(`dataStep${step}`, JSON.stringify(newUser))
-    console.log('fui chamado next stap')
   }
 
   const backStep = () => {
@@ -33,33 +34,38 @@ function Menu () {
   }
 
 
+  const saveNewUser = () => {
+    localStorage.setItem("allUsers", JSON.stringify(allUsers))
+  }
 
   const renderStaps = () => {
     if (step === 1) return <FirsStep step={step} nextStep={nextStep} />
     if (step === 2) return <SecondStep step={step} nextStep={nextStep}/>
     if (step === 3) return <ThirdStep step={step} nextStep={nextStep} />
-    if (step === 4) return <FourthStep step={step} createUser={createUser} toggleModal={toggleModal} />  
+    if (step === 4) return <FourthStep step={step} createUser={createUser} toggleModal={toggleModal} saveNewUser={saveNewUser}/>  
   }
 
   return (
     <aside>
       <div>
-        <button>Listar clientes</button>
+        <button onClick={ShowUserList}>Listar clientes</button>
         <button onClick={toggleModal}>Novo Cliente</button>
-         <Modal
-        isOpen={isOpen}
-        style={customStyles}
-        contentLabel="create user modal"
-      >
-        <NavbarForm toggleModal={toggleModal} step={step} backStep={backStep}/>
-        <form>
-          {renderStaps()}
-        </form>
-      </Modal>
+        <Modal
+          isOpen={isOpen}
+          style={customStyles}
+          contentLabel="create user modal"
+        >
+          <NavbarForm toggleModal={toggleModal} step={step} backStep={backStep}/>
+          <form>
+            {renderStaps()}
+          </form>
+        </Modal>
       </div>
     </aside>
   )
 }
 
-
+Menu.propTypes = {
+  ShowUserList: PropTypes.func
+}
 export default Menu;
