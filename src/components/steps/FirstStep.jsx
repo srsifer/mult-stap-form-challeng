@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import firstStepValidation from '../../utils/inputValidations'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer , toast } from 'react-toastify'
 
 
  const FirstStep = ({/* step, */ nextStep}) => {
@@ -15,6 +18,20 @@ import PropTypes from 'prop-types'
     stepProgress !== null ? setNewUser(stepProgress) : setNewUser(newUser)
   }
   
+    function handleValidation() {
+    const validationError = firstStepValidation.firstStepValidation(newUser).error;
+    if (validationError) return <>{toast.error(`${validationError.message}`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })}</>
+     nextStep(newUser)
+    }
+  
 
    useEffect(()=> {
      getProgressFromLocalStorage()
@@ -28,6 +45,17 @@ import PropTypes from 'prop-types'
   
     return (
       <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
       <h2>primeiro passo</h2>
         <label name='name'>
           <p>nome:</p>
@@ -39,7 +67,6 @@ import PropTypes from 'prop-types'
           placeholder='nome'
           alt='campo pra preencher o nome'
           onChange={ handleChange }
-          
           />
         </label>
         <label name='lastname'>
@@ -64,6 +91,7 @@ import PropTypes from 'prop-types'
           alt='campo pra preencher o email'
           value={newUser.email}
           onChange={ handleChange }
+
           />
         </label>
         <label name='cell'>
@@ -80,7 +108,8 @@ import PropTypes from 'prop-types'
         </label>
         <button
           type='button'
-          onClick={() => nextStep(newUser)}
+
+          onClick={() =>  handleValidation()}
         > 
           Próximo
         </button>

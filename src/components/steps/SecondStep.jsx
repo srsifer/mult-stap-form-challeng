@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import secondStepValidation from '../../utils/inputValidations'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer , toast } from 'react-toastify'
 
 
 const SecondStep = ({/* step, */ nextStep}) => {
@@ -22,9 +25,34 @@ const SecondStep = ({/* step, */ nextStep}) => {
    useEffect(()=> {
      getProgressFromLocalStorage()
    },[])
+
+   function handleValidation() {
+    const validationError = secondStepValidation.secondStepValidation(newUser).error;
+    if (validationError) return <>{toast.error(`${validationError.message}`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })}</>
+     nextStep(newUser)
+    }
  
   return (
     <>
+     <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
     <h3>segundo passo</h3>
     <label name='cep'>
           <p>cep:</p>
@@ -64,7 +92,7 @@ const SecondStep = ({/* step, */ nextStep}) => {
         </label>
         <button
           type='button'
-          onClick={() => nextStep(newUser)}
+          onClick={() => handleValidation()}
         > 
           Próximo
         </button>

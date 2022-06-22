@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
+import thirdStepValidation from '../../utils/inputValidations'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer , toast } from 'react-toastify'
 
 const ThirdStep = ({step, nextStep}) => {
     const [ newUser, setNewUser] = useState({
@@ -22,8 +25,33 @@ const ThirdStep = ({step, nextStep}) => {
      getProgressFromLocalStorage()
    },[])
 
+      function handleValidation() {
+    const validationError = thirdStepValidation.thirdStepValidation(newUser).error;
+    if (validationError) return <>{toast.error(`${validationError.message}`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })}</>
+     nextStep(newUser)
+    }
+
     return (
       <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
         <h3>Terceito passo</h3>
         <label name='date'>
           <p>Data de Nascimento:</p>
@@ -63,7 +91,7 @@ const ThirdStep = ({step, nextStep}) => {
         </label>
         <button
           type='button'
-          onClick={() => nextStep(newUser)}
+          onClick={() => handleValidation()}
           disabled={step === 4}
         > 
           Próximo
