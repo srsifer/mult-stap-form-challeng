@@ -31,21 +31,25 @@ const ThirdStep = ({step, nextStep}) => {
 
       function handleValidation() {
     const validationError = thirdStepValidation.thirdStepValidation(newUser).error;
-    if (validationError) return <>{toast.error(`${validationError.message}`, {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    })}</>
-     createId()
-     nextStep(newUser)
+    if (validationError) return(
+      <>{
+        toast.error(`${validationError.message}`, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })}
+      </>
+    )
+     createId();
+     nextStep(newUser);
     }
 
-    return (
-      <>
+  return (
+    <>
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -56,53 +60,53 @@ const ThirdStep = ({step, nextStep}) => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+      />
+      <h3>Terceito passo</h3>
+      <label name='date'>
+        <p>Data de Nascimento:</p>
+        <input 
+        type="date" 
+        id='date'
+        name='date'
+        placeholder='Data de Nascimento'
+        alt='campo pra preencher a Data de Nascimento'
+        value={newUser.date}
+        onChange={ handleChange }
         />
-        <h3>Terceito passo</h3>
-        <label name='date'>
-          <p>Data de Nascimento:</p>
-          <input 
-          type="date" 
-          id='date'
-          name='date'
-          placeholder='Data de Nascimento'
-          alt='campo pra preencher a Data de Nascimento'
-          value={newUser.date}
-          onChange={ handleChange }
-          />
-        </label>
-        <label name='CPF'>
-          <p>CPF:</p>
-          <input 
-          type="text" 
-          id='CPF'
-          name='cpf'
-          placeholder='CPF'
-          alt='campo pra preencher o CPF (cadastro de pessoa fisica)'
-          value={newUser.cpf}
-          onChange={ handleChange }
-          />
-        </label>
-        <label name='salary'>
-          <p>Renda Mensal:</p>
-          <input 
-          type="number" 
-          id='salary'
-          name='salary'
-          placeholder='Renda Mensal'
-          alt='campo pra preencher a Renda Mensal'
-          value={newUser.salary}
-          onChange={ handleChange }
-          />
-        </label>
-        <button
-          type='button'
-          onClick={() => handleValidation()}
-          disabled={step === 4}
-        > 
-          Próximo
-        </button>
-    </>
-    )
+      </label>
+      <label name='CPF'>
+        <p>CPF:</p>
+        <input 
+        type="text" 
+        id='CPF'
+        name='cpf'
+        placeholder='CPF'
+        alt='campo pra preencher o CPF (cadastro de pessoa fisica)'
+        value={newUser.cpf}
+        onChange={ handleChange }
+        />
+      </label>
+      <label name='salary'>
+        <p>Renda Mensal:</p>
+        <input 
+        type="number" 
+        id='salary'
+        name='salary'
+        placeholder='Renda Mensal'
+        alt='campo pra preencher a Renda Mensal'
+        value={newUser.salary}
+        onChange={ handleChange }
+        />
+      </label>
+      <button
+        type='button'
+        onClick={() => handleValidation()}
+        disabled={step === 4}
+      > 
+        Próximo
+      </button>
+  </>
+  )
 }
 
 ThirdStep.propTypes = {

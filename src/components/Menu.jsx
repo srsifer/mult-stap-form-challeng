@@ -68,4 +68,5 @@ function Menu ({ShowUserList}) {
 Menu.propTypes = {
   ShowUserList: PropTypes.func
 }
+
 export default Menu;

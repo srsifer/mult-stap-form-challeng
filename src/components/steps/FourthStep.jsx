@@ -11,7 +11,6 @@ const FourthStep = ({createUser, toggleModal, saveNewUser}) => {
   const lastStep = () => {
     dispach(createNewUser(createUser))
     localStorage.clear()
-    // utilizar o useSelector pra guardar todos usuarios criados no redux
     toggleModal()
     saveNewUser()
   }

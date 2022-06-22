@@ -28,15 +28,18 @@ const SecondStep = ({/* step, */ nextStep}) => {
 
    function handleValidation() {
     const validationError = secondStepValidation.secondStepValidation(newUser).error;
-    if (validationError) return <>{toast.error(`${validationError.message}`, {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    })}</>
+    if (validationError) return (
+    <>
+      {toast.error(`${validationError.message}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })}
+    </>)
      nextStep(newUser)
     }
  
@@ -53,10 +56,10 @@ const SecondStep = ({/* step, */ nextStep}) => {
         draggable
         pauseOnHover
         />
-    <h3>segundo passo</h3>
-    <label name='cep'>
-          <p>cep:</p>
-          <input 
+      <h3>segundo passo</h3>
+      <label name='cep'>
+        <p>cep:</p>
+        <input 
           type="text" 
           id='cep'
           name='cep'
@@ -64,11 +67,11 @@ const SecondStep = ({/* step, */ nextStep}) => {
           alt='campo pra preencher o cep'
           value={newUser.cep}
           onChange={ handleChange }
-          />
+        />
         </label>
         <label name='adress'>
-          <p>endereço 1:</p>
-          <input 
+        <p>endereço 1:</p>
+        <input 
           type="text" 
           id='adress'
           name='adress'
@@ -76,7 +79,7 @@ const SecondStep = ({/* step, */ nextStep}) => {
           alt='campo pra preencher o endereço 1'
           value={newUser.adress}
           onChange={ handleChange }
-          />
+        />
         </label>
         <label name='adresstwo'>
           <p>endereço 2:</p>
