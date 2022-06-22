@@ -3,31 +3,22 @@ import { createSlice } from '@reduxjs/toolkit';
 export const newUser = createSlice({
   name: 'newUser',
   initialState: {
-    user: [{
-      name: '',
-      lastName: '',
-      email: '',
-      cell: '',
-      cep: '',
-      adressOne: '',
-      adressTwo: '',
-      date: 'dd/mm/aaaa',
-      cpf: '000.000.000.00',
-      salary: 0.000
-    }]
+    users: [],
   },
 
   reducers: {
-    stepOneReducer: (state, action) => {
-      state.user = [...state.user, action.payload];
+    createNewUser: (state, action) => {
+      state.users = [...state.users, action.payload];
     },
+
 
   },
 
 });
 
 export const {
-  stepOneReducer,
+  createNewUser,
+
 } = newUser.actions;
 
 export default newUser.reducer;

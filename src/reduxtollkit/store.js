@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import stapOneReducer from './slice/createUser'
+import UserStore from './slice/createUser'
 
 
 
 export default configureStore({
-  reducer: { stapOneReducer }
+  reducer: { UserStore }
 });
