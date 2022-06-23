@@ -3,25 +3,26 @@ import styled from 'styled-components'
 export const HeaderApp = styled.header`
   text-align: center;
   margin: 1%;
-  font-size: large;
+  font-size: medium;
   font-weight: bold;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  position: relative;
-   z-index: 1;
 
+  h1 {
+    margin-bottom: 40px;
+  }
 
   input {
     z-index: 1;
-    position: absolute;
+    position: relative;
   }
 
   svg {
     font-size: xx-large;
     font-weight: bold;
     z-index: 1;
-    position: absolute;
+    position: relative;
   }
 `
 
@@ -42,6 +43,8 @@ export const ClientListStyles = styled.ul`
   left: auto;
   right: auto;
   background-color: #25bd82;
+  min-width: fit-content;
+
 
   li {
     border: 1px solid #00ff9d;
@@ -49,6 +52,7 @@ export const ClientListStyles = styled.ul`
     text-align: center;
     font-size: 22px;
     font-weight: bolder;
+    min-width: fit-content;
     padding: 1vw;
     border-radius: 1em;
     :hover {

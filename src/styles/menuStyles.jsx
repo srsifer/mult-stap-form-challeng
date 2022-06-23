@@ -8,7 +8,9 @@ export const AsideMenuStyles = styled.aside`
   margin-right: auto;
   width: 30vw;
   left: 0;
-  min-width: 250px;
+  min-width: fit-content;
+  min-height: fit-content;
+  max-height: max-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,9 +27,9 @@ export const AsideMenuStyles = styled.aside`
     border-radius: 1em;
     margin: 1em;
     height: 10%;
-    min-height: max-content;
+    min-height: fit-content;
     width: 80%;
-    min-width: max-content;
+    min-width: fit-content;
     text-align: center;
     font-size: medium;
     font-weight: bolder;

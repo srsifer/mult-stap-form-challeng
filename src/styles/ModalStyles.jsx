@@ -8,6 +8,7 @@ export const customStyles = {
     width: '80%',
     height: 'max-content',
     maxWidth: '850px',
+    minHeigth: 'fit-content',
     borderRadius: '15px',
     backgroundColor: '#61D095',
     color: 'white'

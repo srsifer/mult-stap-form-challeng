@@ -8,7 +8,7 @@ import { CgMenu } from "react-icons/cg";
 
 function App() {
   const [showuserList, setShowUserList] = useState(true)
-  const [showMenu, setShowMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(true)
   const storeRedux = useSelector(({UserStore}) => (UserStore.users))
 
   const toggleList = () => {

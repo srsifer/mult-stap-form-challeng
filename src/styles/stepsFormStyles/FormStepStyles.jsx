@@ -11,28 +11,28 @@ export const FormStepStyles = styled.section`
 export const SectionInputs = styled.section`
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: 90%;
   justify-content: space-around;
   justify-items: center;
   align-items: center;
 
   p {
-    font-size: x-large;
+    font-size: large;
     font-weight: bold;
     text-align: center;
   }
 
   input {
     text-align: center;
-    width: 95%;
-    min-width: 200px;
-    height: 4em;
+    width: 85%;
+    min-width: fit-content;
+    height: 2em;
     margin: 1em;
-    border-radius: 1em;
+    border-radius: 14px;
     background-color: #82dfa2;
     text-align: center;
     font-size: larger;
-    font-weight: bolder;
+    font-weight: bold;
     color: white;
     border: 1px solid white;
     ::placeholder {
