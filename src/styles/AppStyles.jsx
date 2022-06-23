@@ -2,9 +2,27 @@ import styled from 'styled-components'
 
 export const HeaderApp = styled.header`
   text-align: center;
-  margin: 1rem;
+  margin: 1%;
   font-size: large;
   font-weight: bold;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  position: relative;
+   z-index: 1;
+
+
+  input {
+    z-index: 1;
+    position: absolute;
+  }
+
+  svg {
+    font-size: xx-large;
+    font-weight: bold;
+    z-index: 1;
+    position: absolute;
+  }
 `
 
 export const BodyAppSection = styled.div`
