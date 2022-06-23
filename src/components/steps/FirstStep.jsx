@@ -74,6 +74,7 @@ import { ButtonNextStep, FormStepStyles, SectionInputs } from '../../styles/step
           placeholder='nome'
           alt='campo pra preencher o nome'
           onChange={ handleChange }
+          required={true}
         />
         </label>
         <label name='lastname'>
@@ -91,7 +92,7 @@ import { ButtonNextStep, FormStepStyles, SectionInputs } from '../../styles/step
         <label name='email'>
         <p>email:</p>
         <input
-          type="text"
+          type="email"
           id='email'
           name='email'
           placeholder='email'
@@ -103,7 +104,7 @@ import { ButtonNextStep, FormStepStyles, SectionInputs } from '../../styles/step
         <label name='cell'>
           <p>telefone:</p>
           <input
-          type="text"
+          type="tel"
           id='cell'
           name='cell'
           placeholder='telefone'

@@ -12,4 +12,8 @@ export default createGlobalStyle`
     background-color: #177450;
     color: #ffffff;
   }
+
+  :first-letter {
+    text-transform: uppercase;
+  }
 `;
