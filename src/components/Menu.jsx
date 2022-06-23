@@ -8,10 +8,10 @@ import {customStyles }from '../styles/ModalStyles'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import Modal from 'react-modal';
+import { AsideMenuStyles } from '../styles/menuStyles'
 
 
-
-function Menu ({ShowUserList}) {
+function Menu ({ShowUserList, showMenu}) {
   const [isOpen, setIsOpen ] = useState(false)
   const [step, setStep] = useState(1)
   const [createUser, setCreateUser] = useState([])
@@ -42,17 +42,17 @@ function Menu ({ShowUserList}) {
     if (step === 1) return <FirsStep step={step} nextStep={nextStep} />
     if (step === 2) return <SecondStep step={step} nextStep={nextStep}/>
     if (step === 3) return <ThirdStep step={step} nextStep={nextStep} />
-    if (step === 4) return <FourthStep step={step} createUser={createUser} toggleModal={toggleModal} saveNewUser={saveNewUser}/>  
+    if (step === 4) return <FourthStep step={step} createUser={createUser} toggleModal={toggleModal} saveNewUser={saveNewUser}/>
   }
 
   return (
-    <aside>
-      <div>
+    <AsideMenuStyles showMenu={showMenu}>
         <button onClick={ShowUserList}>Listar clientes</button>
         <button onClick={toggleModal}>Novo Cliente</button>
         <Modal
           isOpen={isOpen}
           style={customStyles}
+          ariaHideApp={false}
           contentLabel="create user modal"
         >
           <NavbarForm toggleModal={toggleModal} step={step} backStep={backStep}/>
@@ -60,13 +60,13 @@ function Menu ({ShowUserList}) {
             {renderStaps()}
           </form>
         </Modal>
-      </div>
-    </aside>
+    </AsideMenuStyles>
   )
 }
 
 Menu.propTypes = {
-  ShowUserList: PropTypes.func
+  ShowUserList: PropTypes.func,
+  showMenu: PropTypes.bool
 }
 
 export default Menu;
