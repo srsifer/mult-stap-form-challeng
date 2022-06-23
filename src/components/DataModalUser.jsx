@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { customStyles } from '../styles/ModalStyles';
 import PropTypes from 'prop-types'
+import { MainDataModalStyles } from '../styles/DataModalUserStyles';
+import { ButtonNextStep } from '../styles/stepsFormStyles/FormStepStyles';
 
 function DataModalUser({client}) {
   const {
@@ -30,25 +32,37 @@ function DataModalUser({client}) {
           hidden={true}
           id='user'
           onClick={toggleUserData}
-        >
-          visualizar dados
-        </button>
+        />
       </label>
       <Modal
         isOpen={showUserData}
         style={customStyles}
+        ariaHideApp={false}
         contentLabel="create user modal"
       >
-        <h3>{`${name} ${lastname}`}</h3>
-        <p>{email}</p>
-        <p>{cell}</p>
-        <p>{cep}</p>
-        <p>{adress}</p>
-        <p>{adresstwo}</p>
-        <p>{date}</p>
-        <p>{cpf}</p>
-        <p>{salary}</p>
-        <button onClick={() => toggleUserData()}>fechar</button>
+        <MainDataModalStyles>
+          <h3>{`Nome: ${name} ${lastname}`}</h3>
+          <hr />
+          <p>{`Email: ${email}`}</p>
+          <hr />
+          <p>{`Telefone: ${cell}`}</p>
+          <hr />
+          <p>{`Cep: ${cep}`}</p>
+          <hr />
+          <p>{`Endereço: ${adress}`}</p>
+          <hr />
+          <p>{`Endereço alternativo: ${adresstwo}`}</p>
+          <hr />
+          <p>{`Data de nascimento: ${date}`}</p>
+          <hr />
+          <p>{`CPF: ${cpf}`}</p>
+          <hr />
+          <p>{`Salario: ${salary},00`}</p>
+          <hr />
+          <div>
+            <ButtonNextStep onClick={() => toggleUserData()}>fechar</ButtonNextStep>
+          </div>
+        </MainDataModalStyles>
       </Modal>
     </li>
   )
