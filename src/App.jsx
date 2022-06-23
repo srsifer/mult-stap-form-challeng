@@ -6,12 +6,12 @@ import  Menu  from './components/Menu'
 
 function App() {
   const [showuserList, setShowUserList] = useState(true)
+  const storeRedux = useSelector(({UserStore}) => (UserStore.users))
 
   const toggleList = () => {
     setShowUserList(!showuserList)
+    localStorage.setItem('allUsers', JSON.stringify(storeRedux))
   }
-
-  const storeRedux = useSelector(({UserStore}) => (UserStore.users))
   return (
     <>
       <h1>Multi Steps Form</h1>
