@@ -7,5 +7,8 @@ export const customStyles = {
     transform: 'translate(-50%, -50%)',
     width: '80%',
     height: 'max-content',
+    borderRadius: '15px',
+    backgroundColor: '#61D095',
+    color: 'white'
   },
-};  
+};
