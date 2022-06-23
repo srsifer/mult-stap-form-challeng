@@ -42,21 +42,15 @@ function DataModalUser({client}) {
       >
         <MainDataModalStyles>
           <h3>{`Nome: ${name} ${lastname}`}</h3>
-          <hr />
           <p>{`Email: ${email}`}</p>
-          <hr />
           <p>{`Telefone: ${cell}`}</p>
           <hr />
           <p>{`Cep: ${cep}`}</p>
-          <hr />
           <p>{`Endereço: ${adress}`}</p>
-          <hr />
           <p>{`Endereço alternativo: ${adresstwo}`}</p>
           <hr />
           <p>{`Data de nascimento: ${date}`}</p>
-          <hr />
           <p>{`CPF: ${cpf}`}</p>
-          <hr />
           <p>{`Salario: ${salary},00`}</p>
           <hr />
           <div>
