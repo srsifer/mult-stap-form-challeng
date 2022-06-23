@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import firstStepValidation from '../../utils/inputValidations'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer , toast } from 'react-toastify'
+import { ButtonNextStep, FormStepStyles, SectionInputs } from '../../styles/stepsFormStyles/FormStepStyles'
 
 
  const FirstStep = ({/* step, */ nextStep}) => {
@@ -17,7 +18,7 @@ import { ToastContainer , toast } from 'react-toastify'
     const stepProgress = JSON.parse(localStorage.getItem('dataStep1'))
     stepProgress !== null ? setNewUser(stepProgress) : setNewUser(newUser)
   }
-  
+
   function handleValidation() {
     const validationError = firstStepValidation.firstStepValidation(newUser).error;
     if (validationError) return (
@@ -34,20 +35,20 @@ import { ToastContainer , toast } from 'react-toastify'
     )
      nextStep(newUser)
     }
-  
+
 
    useEffect(()=> {
      getProgressFromLocalStorage()
    },[])
-   
+
 
    const handleChange = ({ target: { name, value } }) => {
     setNewUser({...newUser, [name]: value });
   };
 
-  
+
     return (
-    <>
+    <FormStepStyles>
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -59,62 +60,66 @@ import { ToastContainer , toast } from 'react-toastify'
         draggable
         pauseOnHover
       />
-      <h2>primeiro passo</h2>
-      <label name='name'>
-      <p>nome:</p>
-      <input 
-        type="text" 
-        id='name'
-        name='name'
-        value={newUser.name}
-        placeholder='nome'
-        alt='campo pra preencher o nome'
-        onChange={ handleChange }
-      />
-      </label>
-      <label name='lastname'>
-      <p>sobrenome:</p>
-      <input 
-        type="text" 
-        id='lastname'
-        name='lastname'
-        value={newUser.lastname}
-        placeholder='sobrenome'
-        alt='campo pra preencher o sobrenome'
-        onChange={ handleChange }
-      />
-      </label>
-      <label name='email'>
-      <p>email:</p>
-      <input 
-        type="text" 
-        id='email' 
-        name='email'
-        placeholder='email'
-        alt='campo pra preencher o email'
-        value={newUser.email}
-        onChange={ handleChange }
-      />
-      </label>
-      <label name='cell'>
-        <p>telefone:</p>
-        <input 
-        type="text"
-        id='cell'
-        name='cell'
-        placeholder='telefone'
-        alt='campo pra preencher o telefone'
-        value={newUser.cell}
-        onChange={ handleChange }
+      <div>
+        <h2>primeiro passo</h2>
+      </div>
+      <SectionInputs>
+        <label name='name'>
+        <p>nome:</p>
+        <input
+          type="text"
+          id='name'
+          name='name'
+          value={newUser.name}
+          placeholder='nome'
+          alt='campo pra preencher o nome'
+          onChange={ handleChange }
         />
-      </label>
-      <button
+        </label>
+        <label name='lastname'>
+        <p>sobrenome:</p>
+        <input
+          type="text"
+          id='lastname'
+          name='lastname'
+          value={newUser.lastname}
+          placeholder='sobrenome'
+          alt='campo pra preencher o sobrenome'
+          onChange={ handleChange }
+        />
+        </label>
+        <label name='email'>
+        <p>email:</p>
+        <input
+          type="text"
+          id='email'
+          name='email'
+          placeholder='email'
+          alt='campo pra preencher o email'
+          value={newUser.email}
+          onChange={ handleChange }
+        />
+        </label>
+        <label name='cell'>
+          <p>telefone:</p>
+          <input
+          type="text"
+          id='cell'
+          name='cell'
+          placeholder='telefone'
+          alt='campo pra preencher o telefone'
+          value={newUser.cell}
+          onChange={ handleChange }
+          />
+        </label>
+      </SectionInputs>
+      <ButtonNextStep
         type='button'
         onClick={() =>  handleValidation()}
-      > 
+      >
         Próximo
-      </button>
-    </>
+      </ButtonNextStep>
+    </FormStepStyles>
   )
 }
 
