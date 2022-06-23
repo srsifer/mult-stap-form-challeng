@@ -4,7 +4,7 @@ import { customStyles } from '../styles/ModalStyles';
 import PropTypes from 'prop-types'
 
 function DataModalUser({client}) {
-  const { 
+  const {
     name,
     lastname,
     email,
@@ -25,8 +25,8 @@ function DataModalUser({client}) {
   return (
     <li>
       <label name="user">
-        <p>{`Nome: ${name} ${lastname}  email: ${email}`} </p>
-        <button 
+        <p>{` ${name} ${lastname}: ${email}`} </p>
+        <button
           hidden={true}
           id='user'
           onClick={toggleUserData}
