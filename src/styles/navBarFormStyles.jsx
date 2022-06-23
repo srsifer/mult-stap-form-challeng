@@ -14,7 +14,7 @@ export const NavbarFormStyles = styled.nav`
     border-radius: 15px;
     max-height: 10px;
     padding: 5px;
-    background-color: #369465;
+
     max-width: 60%;
   }
 
@@ -37,4 +37,17 @@ export const NavbarFormStyles = styled.nav`
       transform: scale(1.2);
     }
   }
+`
+
+export const StepDivAnimation = styled.div`
+    background-color: ${({step}) => step >= 1 ? '#369465;' : 'white'};
+`
+export const StepDivAnimation2 = styled.div`
+    background-color: ${({step}) => step >= 2 ? '#369465;' : 'white'};
+`
+export const StepDivAnimation3 = styled.div`
+    background-color: ${({step}) => step >= 3  ? '#369465;' : 'white'};
+`
+export const StepDivAnimation4 = styled.div`
+    background-color: ${({step}) => step  >= 4 ? '#369465;' : 'white'};
 `

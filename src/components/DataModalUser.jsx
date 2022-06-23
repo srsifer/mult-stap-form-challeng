@@ -73,7 +73,7 @@ DataModalUser.propTypes={
     adresstwo: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     cpf: PropTypes.string.isRequired,
-    salary: PropTypes.number.isRequired,
+    salary: PropTypes.string.isRequired,
   }).isRequired
 }
 

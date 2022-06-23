@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineClose, AiOutlineArrowLeft } from "react-icons/ai";
-import { NavbarFormStyles } from '../styles/navBarFormStyles';
+import { NavbarFormStyles, StepDivAnimation, StepDivAnimation2, StepDivAnimation3, StepDivAnimation4 } from '../styles/navBarFormStyles';
 import PropTypes from 'prop-types'
 
 const NavbarForm = ({ toggleModal,backStep, step }) => {
+  useEffect(() => {
+   console.log(step)
+  }, [step])
+
   return (
     <NavbarFormStyles>
       <button hidden={step === 1} onClick={backStep}> <AiOutlineArrowLeft /> </button>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <StepDivAnimation step={step}></StepDivAnimation>
+      <StepDivAnimation2 step={step}></StepDivAnimation2>
+      <StepDivAnimation3 step={step}></StepDivAnimation3>
+      <StepDivAnimation4 step={step}></StepDivAnimation4>
      <button hidden={step === 4} onClick={toggleModal}><AiOutlineClose/></button>
     </NavbarFormStyles>
   )
