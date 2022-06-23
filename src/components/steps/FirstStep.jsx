@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import firstStepValidation from '../../utils/inputValidations'
-import 'react-toastify/dist/ReactToastify.css'
-import { ToastContainer , toast } from 'react-toastify'
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import firstStepValidation from '../../utils/inputValidations';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer , toast } from 'react-toastify';
 import { ButtonNextStep, FormStepStyles, SectionInputs } from '../../styles/stepsFormStyles/FormStepStyles'
 
 
