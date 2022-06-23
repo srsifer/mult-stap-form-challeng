@@ -4,7 +4,7 @@ export const FormStepStyles = styled.section`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -12,7 +12,7 @@ export const SectionInputs = styled.section`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-around;
   justify-items: center;
   align-items: center;
 
@@ -35,6 +35,9 @@ export const SectionInputs = styled.section`
     font-weight: bolder;
     color: white;
     border: 1px solid white;
+    ::placeholder {
+      color: #d9f8ea;
+    }
   }
 `;
 
@@ -50,7 +53,27 @@ export const ButtonNextStep = styled.button`
   font-size: 16px;
   font-weight: bolder;
   color: white;
+
   :hover {
     transform: scale(1.2);
+  }
+`
+
+export const SucessFormStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+    h2 {
+    text-align: center;
+    margin: 1em;
+  }
+
+  svg{
+    font-size: xx-large;
+    font-weight: bolder;
+    margin: 2%;
+
   }
 `
