@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavbarFormStyles = styled.nav`
   display: flex;
   flex-direction: row;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   min-width: 60%;
 
@@ -14,6 +14,7 @@ export const NavbarFormStyles = styled.nav`
     border-radius: 15px;
     max-height: 10px;
     padding: 5px;
+    background-color: #369465;
     max-width: 60%;
   }
 
@@ -25,5 +26,15 @@ export const NavbarFormStyles = styled.nav`
   svg {
     font-weight: bolder;
     font-size: xx-large;
+  }
+
+  button {
+    border: none;
+    background-color: #61d09513;
+    color: white;
+    padding: 0%;
+    :hover {
+      transform: scale(1.2);
+    }
   }
 `
