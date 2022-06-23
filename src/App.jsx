@@ -2,7 +2,7 @@ import React, {  useState } from 'react'
 import { useSelector } from 'react-redux'
 import DataModalUser from './components/DataModalUser';
 import  Menu  from './components/Menu'
-import { ClientListStyles } from './styles/AppStyles';
+import { BodyAppSection, ClientListStyles, HeaderApp } from './styles/AppStyles';
 
 
 function App() {
@@ -14,11 +14,12 @@ function App() {
     localStorage.setItem('allUsers', JSON.stringify(storeRedux))
   }
   return (
-    <section>
-      <div>
-        <h1>Multi Steps Form</h1>
-        <Menu ShowUserList={toggleList}/>
-      </div>
+    <>
+    <HeaderApp>
+      <h1>Multi Steps Form</h1>
+    </HeaderApp>
+    <BodyAppSection>
+      <Menu ShowUserList={toggleList}/>
       {
         storeRedux == undefined || storeRedux == []
         ? <h2>nenhum cliente cadastrado </h2>
@@ -36,7 +37,8 @@ function App() {
           }
         </ClientListStyles>
       }
-    </section>
+    </BodyAppSection>
+    </>
   )
 }
 
