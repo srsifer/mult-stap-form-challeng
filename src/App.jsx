@@ -45,7 +45,7 @@ function App() {
               storeRedux.map((client)=> {
                 return (
                 <DataModalUser
-                  key={(Math.random() * client.id)}
+                  key={Math.random() * client.id + Math.random()}
                   client={client}
                 />
                 )
