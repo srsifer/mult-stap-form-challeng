@@ -99,7 +99,7 @@ const ThirdStep = ({step, nextStep}) => {
           name='salary'
           placeholder='Renda Mensal'
           alt='campo pra preencher a Renda Mensal'
-          value={newUser.salary}
+          value={newUser.salary || ''}
           onChange={ handleChange }
           />
         </label>

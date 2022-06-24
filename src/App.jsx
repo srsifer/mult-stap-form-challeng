@@ -14,42 +14,46 @@ function App() {
   const toggleList = () => {
     setShowUserList(!showuserList)
     localStorage.setItem('allUsers', JSON.stringify(storeRedux))
+    toggleShowMenu()
   }
 
 
    const toggleShowMenu = () => {
      setShowMenu(!showMenu)
    }
+
   return (
     <>
-    <HeaderApp>
-      <p></p>
-      <h1>Multi Steps Form</h1>
-      <label name="checkMenu">
-      <input hidden type="checkbox" onClick={toggleShowMenu} id="checkMenu"/>
-        <CgMenu/>
-      </label>
-    </HeaderApp>
-    <BodyAppSection>
-      <Menu ShowUserList={toggleList} showMenu={showMenu}/>
-      {
-        storeRedux == undefined || storeRedux == []
-        ? <h2>nenhum cliente cadastrado </h2>
-        :
-        <ClientListStyles hidden={showuserList}>
-          {
-            storeRedux.map((client)=> {
-              return (
-              <DataModalUser
-                key={client.id}
-                client={client}
-              />
-              )
-            })
-          }
-        </ClientListStyles>
-      }
-    </BodyAppSection>
+      <HeaderApp>
+        <p></p>
+        <h1>Multi Steps Form</h1>
+        <label name="checkMenu">
+        <input hidden type="checkbox" onClick={toggleShowMenu} id="checkMenu"/>
+          <CgMenu/>
+        </label>
+      </HeaderApp>
+      <BodyAppSection>
+        <Menu ShowUserList={toggleList} showMenu={showMenu} closeMenu={toggleShowMenu}/>
+        {
+          storeRedux === undefined || storeRedux.length === 0
+          ? <ClientListStyles hidden={showuserList}>
+              <h2>Nenhum cliente cadastrado </h2>
+            </ClientListStyles>
+          :
+          <ClientListStyles hidden={showuserList}>
+            {
+              storeRedux.map((client)=> {
+                return (
+                <DataModalUser
+                  key={(Math.random() * client.id)}
+                  client={client}
+                />
+                )
+              })
+            }
+          </ClientListStyles>
+        }
+      </BodyAppSection>
     </>
   )
 }

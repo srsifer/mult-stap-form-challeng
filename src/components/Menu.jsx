@@ -11,7 +11,7 @@ import Modal from 'react-modal';
 import { AsideMenuStyles } from '../styles/menuStyles'
 
 
-function Menu ({ShowUserList, showMenu}) {
+function Menu ({ShowUserList, showMenu, closeMenu}) {
   const [isOpen, setIsOpen ] = useState(false)
   const [step, setStep] = useState(1)
   const [createUser, setCreateUser] = useState([])
@@ -20,6 +20,7 @@ function Menu ({ShowUserList, showMenu}) {
 
   const toggleModal = () => {
     setIsOpen(!isOpen)
+    closeMenu()
     setStep(1)
   }
 
@@ -66,7 +67,8 @@ function Menu ({ShowUserList, showMenu}) {
 
 Menu.propTypes = {
   ShowUserList: PropTypes.func,
-  showMenu: PropTypes.bool
+  showMenu: PropTypes.bool,
+  closeMenu: PropTypes.func
 }
 
 export default Menu;

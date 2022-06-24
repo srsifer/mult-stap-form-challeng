@@ -74,7 +74,6 @@ import { ButtonNextStep, FormStepStyles, SectionInputs } from '../../styles/step
           placeholder='nome'
           alt='campo pra preencher o nome'
           onChange={ handleChange }
-          required={true}
         />
         </label>
         <label name='lastname'>

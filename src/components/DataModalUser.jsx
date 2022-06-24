@@ -39,6 +39,7 @@ function DataModalUser({client}) {
         style={customStyles}
         ariaHideApp={false}
         contentLabel="create user modal"
+        onRequestClose={toggleUserData}
       >
         <MainDataModalStyles>
           <h3>{`Nome: ${name} ${lastname}`}</h3>
