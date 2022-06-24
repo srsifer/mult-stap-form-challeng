@@ -4,9 +4,6 @@ import { NavbarFormStyles, StepDivAnimation, StepDivAnimation2, StepDivAnimation
 import PropTypes from 'prop-types'
 
 const NavbarForm = ({ toggleModal,backStep, step }) => {
-  useEffect(() => {
-   console.log(step)
-  }, [step])
 
   return (
     <NavbarFormStyles>

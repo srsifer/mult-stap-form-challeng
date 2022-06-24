@@ -1,8 +1,9 @@
-import React, {  useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, {  useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import DataModalUser from './components/DataModalUser';
-import  Menu  from './components/Menu'
+import  Menu  from './components/Menu';
 import { BodyAppSection, ClientListStyles, HeaderApp } from './styles/AppStyles';
+import { createNewUser } from '../src/reduxtollkit/slice/createUser'
 import { CgMenu } from "react-icons/cg";
 
 
@@ -10,10 +11,12 @@ function App() {
   const [showuserList, setShowUserList] = useState(true)
   const [showMenu, setShowMenu] = useState(true)
   const storeRedux = useSelector(({UserStore}) => (UserStore.users))
+  const oldClients = JSON.parse(localStorage.getItem('allUsers'))
+  const dispatch = useDispatch()
 
   const toggleList = () => {
     setShowUserList(!showuserList)
-    localStorage.setItem('allUsers', JSON.stringify(storeRedux))
+    localStorage.setItem('allUsers', JSON.stringify(...storeRedux))
     toggleShowMenu()
   }
 
@@ -21,6 +24,18 @@ function App() {
    const toggleShowMenu = () => {
      setShowMenu(!showMenu)
    }
+
+
+   const getOldClients = () =>{
+    if (oldClients !== null) dispatch(createNewUser(oldClients))
+    return null
+  }
+
+   useEffect(() => {
+    getOldClients()
+    console.log('use efect disparado')
+   }, [0])
+
 
   return (
     <>
