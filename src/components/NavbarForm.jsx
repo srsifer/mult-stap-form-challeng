@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AiOutlineClose, AiOutlineArrowLeft } from "react-icons/ai";
 import { NavbarFormStyles, StepDivAnimation, StepDivAnimation2, StepDivAnimation3, StepDivAnimation4 } from '../styles/navBarFormStyles';
 import PropTypes from 'prop-types'
